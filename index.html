@@ -123,7 +123,7 @@
     .section-fade.visible { opacity: 1; transform: translateY(0); }
   </style>
 </head>
-<body class="antialiased">
+<body class="antialiased overflow-x-hidden">
 
   <!-- NAVBAR -->
   <nav class="fixed top-0 left-0 right-0 z-50 nav-blur bg-dark-900/80 border-b border-white/5">
@@ -143,8 +143,33 @@
           <a href="#why-us" class="text-sm text-slate-400 hover:text-white transition-colors">Pourquoi nous</a>
           <a href="#contact" class="text-sm text-slate-400 hover:text-white transition-colors">Contact</a>
         </div>
-        <a href="#contact" class="btn-primary text-sm font-semibold text-white px-4 py-2 rounded-lg">
-          Demander un devis
+        <div class="flex items-center gap-3">
+          <a href="#contact" class="hidden sm:block btn-primary text-sm font-semibold text-white px-4 py-2 rounded-lg">
+            Demander un devis
+          </a>
+          <button id="mobileMenuBtn" class="md:hidden w-9 h-9 flex items-center justify-center rounded-lg bg-white/5 hover:bg-white/10 transition-colors" aria-label="Menu">
+            <svg id="menuIconOpen" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-white">
+              <line x1="3" y1="6" x2="21" y2="6"/>
+              <line x1="3" y1="12" x2="21" y2="12"/>
+              <line x1="3" y1="18" x2="21" y2="18"/>
+            </svg>
+            <svg id="menuIconClose" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-white hidden">
+              <line x1="18" y1="6" x2="6" y2="18"/>
+              <line x1="6" y1="6" x2="18" y2="18"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- Mobile Menu Dropdown -->
+    <div id="mobileMenu" class="hidden md:hidden bg-dark-900/98 border-t border-white/5 px-4 py-4 space-y-1">
+      <a href="#services" class="mobile-nav-link block text-sm text-slate-300 hover:text-white hover:bg-white/5 px-3 py-2.5 rounded-lg transition-colors">Services</a>
+      <a href="#pricing" class="mobile-nav-link block text-sm text-slate-300 hover:text-white hover:bg-white/5 px-3 py-2.5 rounded-lg transition-colors">Tarifs</a>
+      <a href="#why-us" class="mobile-nav-link block text-sm text-slate-300 hover:text-white hover:bg-white/5 px-3 py-2.5 rounded-lg transition-colors">Pourquoi nous</a>
+      <a href="#contact" class="mobile-nav-link block text-sm text-slate-300 hover:text-white hover:bg-white/5 px-3 py-2.5 rounded-lg transition-colors">Contact</a>
+      <div class="pt-2">
+        <a href="#contact" class="mobile-nav-link btn-primary block text-center text-sm font-semibold text-white px-4 py-3 rounded-xl">
+          Demander un devis gratuit →
         </a>
       </div>
     </div>
@@ -159,24 +184,24 @@
     </div>
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
       <div class="text-center max-w-4xl mx-auto">
-        <div class="inline-flex items-center gap-2 badge rounded-full px-4 py-2 text-sm mb-8">
-          <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse-slow"></span>
-          <span class="text-slate-300">L'agence marketing IA #1 pour les PME africaines</span>
+        <div class="inline-flex items-center gap-2 badge rounded-full px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm mb-6 sm:mb-8 max-w-[calc(100vw-2rem)]">
+          <span class="w-2 h-2 flex-shrink-0 bg-green-400 rounded-full animate-pulse-slow"></span>
+          <span class="text-slate-300 text-center">L'agence marketing IA #1 pour les PME africaines</span>
         </div>
-        <h1 class="text-5xl sm:text-6xl lg:text-7xl font-black leading-tight mb-6">
+        <h1 class="text-3xl sm:text-5xl lg:text-7xl font-black leading-tight mb-6">
           Votre marketing,
           <br />
           <span class="gradient-text">propulsé par l'IA</span>
         </h1>
-        <p class="text-xl text-slate-400 leading-relaxed mb-10 max-w-2xl mx-auto">
+        <p class="text-base sm:text-xl text-slate-400 leading-relaxed mb-8 sm:mb-10 max-w-2xl mx-auto">
           Réseaux sociaux, vidéos virales, stratégie de contenu et analytics — tout géré pour vous. 
           <strong class="text-white">Concentrez-vous sur votre business.</strong> On s'occupe du reste.
         </p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center mb-16">
-          <a href="#contact" class="btn-primary text-white font-bold px-8 py-4 rounded-xl text-lg">
+        <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mb-10 sm:mb-16">
+          <a href="#contact" class="btn-primary text-white font-bold px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl text-base sm:text-lg text-center">
             Demander un devis gratuit →
           </a>
-          <a href="#services" class="bg-white/5 border border-white/10 text-white font-semibold px-8 py-4 rounded-xl text-lg hover:bg-white/10 transition-all">
+          <a href="#services" class="bg-white/5 border border-white/10 text-white font-semibold px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl text-base sm:text-lg hover:bg-white/10 transition-all text-center">
             Voir nos services
           </a>
         </div>
@@ -211,7 +236,7 @@
           <span class="text-accent-400">✦</span>
           <span class="text-slate-300">Ce qu'on fait pour vous</span>
         </div>
-        <h2 class="text-4xl sm:text-5xl font-black mb-4">
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black mb-4">
           Tout ce dont votre<br /><span class="gradient-text">business a besoin</span>
         </h2>
         <p class="text-slate-400 text-lg max-w-2xl mx-auto">
@@ -220,7 +245,7 @@
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <!-- Service 1 -->
-        <div class="gradient-border rounded-2xl p-8 card-hover section-fade">
+        <div class="gradient-border rounded-2xl p-5 sm:p-8 card-hover section-fade">
           <div class="w-14 h-14 rounded-xl bg-brand-500/15 flex items-center justify-center mb-6">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2">
               <path d="M17 2H7a5 5 0 0 0-5 5v10a5 5 0 0 0 5 5h10a5 5 0 0 0 5-5V7a5 5 0 0 0-5-5z"/>
@@ -237,7 +262,7 @@
           </ul>
         </div>
         <!-- Service 2 -->
-        <div class="gradient-border rounded-2xl p-8 card-hover section-fade">
+        <div class="gradient-border rounded-2xl p-5 sm:p-8 card-hover section-fade">
           <div class="w-14 h-14 rounded-xl bg-accent-500/15 flex items-center justify-center mb-6">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="2">
               <polygon points="23 7 16 12 23 17 23 7"/>
@@ -253,7 +278,7 @@
           </ul>
         </div>
         <!-- Service 3 -->
-        <div class="gradient-border rounded-2xl p-8 card-hover section-fade">
+        <div class="gradient-border rounded-2xl p-5 sm:p-8 card-hover section-fade">
           <div class="w-14 h-14 rounded-xl bg-pink-500/15 flex items-center justify-center mb-6">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#f472b6" stroke-width="2">
               <path d="M12 20h9"/>
@@ -269,7 +294,7 @@
           </ul>
         </div>
         <!-- Service 4 -->
-        <div class="gradient-border rounded-2xl p-8 card-hover section-fade">
+        <div class="gradient-border rounded-2xl p-5 sm:p-8 card-hover section-fade">
           <div class="w-14 h-14 rounded-xl bg-green-500/15 flex items-center justify-center mb-6">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="2">
               <line x1="18" y1="20" x2="18" y2="10"/>
@@ -292,13 +317,13 @@
   <!-- WHY US -->
   <section id="why-us" class="py-24 bg-dark-900">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
         <div class="section-fade">
           <div class="inline-flex items-center gap-2 badge rounded-full px-4 py-2 text-sm mb-6">
             <span class="text-accent-400">✦</span>
             <span class="text-slate-300">Pourquoi Marketgint ?</span>
           </div>
-          <h2 class="text-4xl sm:text-5xl font-black mb-6">
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black mb-6">
             L'agence qui<br /><span class="gradient-text">fait le travail</span>
           </h2>
           <p class="text-slate-400 text-lg mb-8">
@@ -336,7 +361,7 @@
         </div>
         <!-- Visual side -->
         <div class="relative section-fade">
-          <div class="rounded-2xl bg-dark-700 border border-white/10 p-6 glow-purple">
+          <div class="rounded-2xl bg-dark-700 border border-white/10 p-4 sm:p-6 glow-purple">
             <div class="flex items-center gap-3 mb-6">
               <div class="w-3 h-3 rounded-full bg-red-500"></div>
               <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
@@ -371,18 +396,18 @@
                   <div class="bg-gradient-to-r from-green-500 to-brand-500 h-2 rounded-full" style="width: 91%"></div>
                 </div>
               </div>
-              <div class="grid grid-cols-3 gap-3 mt-4">
-                <div class="bg-dark-900 rounded-xl p-3 text-center">
-                  <div class="text-xl font-black gradient-text">12K</div>
-                  <div class="text-xs text-slate-500">Abonnés gagnés</div>
+              <div class="grid grid-cols-3 gap-2 mt-4">
+                <div class="bg-dark-900 rounded-xl p-2 sm:p-3 text-center">
+                  <div class="text-lg sm:text-xl font-black gradient-text">12K</div>
+                  <div class="text-[10px] sm:text-xs text-slate-500 leading-tight">Abonnés gagnés</div>
                 </div>
-                <div class="bg-dark-900 rounded-xl p-3 text-center">
-                  <div class="text-xl font-black gradient-text">480</div>
-                  <div class="text-xs text-slate-500">Posts publiés</div>
+                <div class="bg-dark-900 rounded-xl p-2 sm:p-3 text-center">
+                  <div class="text-lg sm:text-xl font-black gradient-text">480</div>
+                  <div class="text-[10px] sm:text-xs text-slate-500 leading-tight">Posts publiés</div>
                 </div>
-                <div class="bg-dark-900 rounded-xl p-3 text-center">
-                  <div class="text-xl font-black gradient-text">98%</div>
-                  <div class="text-xs text-slate-500">Satisfaction</div>
+                <div class="bg-dark-900 rounded-xl p-2 sm:p-3 text-center">
+                  <div class="text-lg sm:text-xl font-black gradient-text">98%</div>
+                  <div class="text-[10px] sm:text-xs text-slate-500 leading-tight">Satisfaction</div>
                 </div>
               </div>
             </div>
@@ -400,7 +425,7 @@
           <span class="text-accent-400">✦</span>
           <span class="text-slate-300">Tarifs transparents</span>
         </div>
-        <h2 class="text-4xl sm:text-5xl font-black mb-4">
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black mb-4">
           Des prix pour<br /><span class="gradient-text">toutes les ambitions</span>
         </h2>
         <p class="text-slate-400 text-lg max-w-xl mx-auto">
@@ -410,11 +435,11 @@
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
 
         <!-- Starter -->
-        <div class="pricing-default rounded-2xl p-8 card-hover section-fade">
+        <div class="pricing-default rounded-2xl p-5 sm:p-8 card-hover section-fade">
           <div class="mb-6">
             <div class="text-sm font-semibold text-slate-400 mb-2 uppercase tracking-widest">Starter</div>
             <div class="flex items-end gap-2 mb-1">
-              <span class="text-5xl font-black text-white">1 500</span>
+              <span class="text-4xl sm:text-5xl font-black text-white">1 500</span>
               <span class="text-slate-400 mb-2">MAD/mois</span>
             </div>
             <p class="text-slate-500 text-sm">Idéal pour débuter en ligne</p>
@@ -451,14 +476,14 @@
         </div>
 
         <!-- Growth (Popular) -->
-        <div class="pricing-popular rounded-2xl p-8 card-hover section-fade relative">
+        <div class="pricing-popular rounded-2xl p-5 sm:p-8 card-hover section-fade relative">
           <div class="absolute -top-4 left-1/2 -translate-x-1/2">
             <div class="btn-primary text-white text-xs font-bold px-4 py-1.5 rounded-full">⭐ Le plus populaire</div>
           </div>
           <div class="mb-6">
             <div class="text-sm font-semibold text-accent-400 mb-2 uppercase tracking-widest">Growth</div>
             <div class="flex items-end gap-2 mb-1">
-              <span class="text-5xl font-black text-white">3 000</span>
+              <span class="text-4xl sm:text-5xl font-black text-white">3 000</span>
               <span class="text-slate-400 mb-2">MAD/mois</span>
             </div>
             <p class="text-slate-500 text-sm">Pour accélérer votre croissance</p>
@@ -495,11 +520,11 @@
         </div>
 
         <!-- Full Stack -->
-        <div class="pricing-default rounded-2xl p-8 card-hover section-fade">
+        <div class="pricing-default rounded-2xl p-5 sm:p-8 card-hover section-fade">
           <div class="mb-6">
             <div class="text-sm font-semibold text-slate-400 mb-2 uppercase tracking-widest">Full Stack</div>
             <div class="flex items-end gap-2 mb-1">
-              <span class="text-5xl font-black text-white">5 000</span>
+              <span class="text-4xl sm:text-5xl font-black text-white">5 000</span>
               <span class="text-slate-400 mb-2">MAD/mois</span>
             </div>
             <p class="text-slate-500 text-sm">Pour dominer votre marché</p>
@@ -548,16 +573,16 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-12 section-fade">
         <p class="text-slate-500 text-sm uppercase tracking-widest mb-6">Ils nous font confiance</p>
-        <div class="flex flex-wrap items-center justify-center gap-12">
-          <div class="text-2xl font-black text-slate-600 hover:text-slate-400 transition-colors">Restaurant Dar Zitoun</div>
-          <div class="text-2xl font-black text-slate-600 hover:text-slate-400 transition-colors">Clinique Santé Plus</div>
-          <div class="text-2xl font-black text-slate-600 hover:text-slate-400 transition-colors">Immobilier Atlas</div>
-          <div class="text-2xl font-black text-slate-600 hover:text-slate-400 transition-colors">Coach Fatima</div>
+        <div class="flex flex-wrap items-center justify-center gap-6 md:gap-12">
+          <div class="text-lg sm:text-2xl font-black text-slate-600 hover:text-slate-400 transition-colors">Restaurant Dar Zitoun</div>
+          <div class="text-lg sm:text-2xl font-black text-slate-600 hover:text-slate-400 transition-colors">Clinique Santé Plus</div>
+          <div class="text-lg sm:text-2xl font-black text-slate-600 hover:text-slate-400 transition-colors">Immobilier Atlas</div>
+          <div class="text-lg sm:text-2xl font-black text-slate-600 hover:text-slate-400 transition-colors">Coach Fatima</div>
         </div>
       </div>
       <!-- Quote -->
       <div class="max-w-3xl mx-auto section-fade">
-        <div class="gradient-border rounded-2xl p-8 text-center">
+        <div class="gradient-border rounded-2xl p-5 sm:p-8 text-center">
           <div class="text-4xl text-accent-400 mb-4">"</div>
           <p class="text-xl text-slate-300 mb-6 italic leading-relaxed">
             Marketgint a transformé notre présence en ligne en 30 jours. Nos réservations ont augmenté de 40% grâce aux posts Instagram et aux vidéos générés par l'IA.
@@ -582,14 +607,14 @@
           <span class="text-green-400">●</span>
           <span class="text-slate-300">Réponse sous 24h</span>
         </div>
-        <h2 class="text-4xl sm:text-5xl font-black mb-4">
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black mb-4">
           <span class="gradient-text">Demandez votre</span><br />devis gratuit
         </h2>
         <p class="text-slate-400 text-lg">
           Parlez-nous de votre business. On vous prépare une stratégie personnalisée — gratuitement.
         </p>
       </div>
-      <div class="gradient-border rounded-2xl p-8 section-fade">
+      <div class="gradient-border rounded-2xl p-4 sm:p-8 section-fade">
         <form id="contactForm" class="space-y-6">
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
             <div>
@@ -620,18 +645,18 @@
           </div>
           <div>
             <label class="block text-sm font-medium text-slate-300 mb-2">Forfait qui vous intéresse</label>
-            <div class="grid grid-cols-3 gap-3">
-              <label class="flex items-center gap-2 p-3 rounded-xl border border-white/10 cursor-pointer hover:border-brand-500/50 transition-colors">
-                <input type="radio" name="plan" value="starter" class="w-4 h-4 accent-violet-500">
-                <span class="text-sm text-slate-300">Starter<br /><span class="text-xs text-slate-500">1 500 MAD</span></span>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-3">
+              <label class="flex items-center gap-3 p-3 rounded-xl border border-white/10 cursor-pointer hover:border-brand-500/50 transition-colors">
+                <input type="radio" name="plan" value="starter" class="w-4 h-4 flex-shrink-0 accent-violet-500">
+                <span class="text-sm text-slate-300">Starter — <span class="text-xs text-slate-500">1 500 MAD</span></span>
               </label>
-              <label class="flex items-center gap-2 p-3 rounded-xl border border-accent-500/50 bg-accent-500/5 cursor-pointer">
-                <input type="radio" name="plan" value="growth" checked class="w-4 h-4 accent-violet-500">
-                <span class="text-sm text-slate-300">Growth<br /><span class="text-xs text-accent-400">3 000 MAD</span></span>
+              <label class="flex items-center gap-3 p-3 rounded-xl border border-accent-500/50 bg-accent-500/5 cursor-pointer">
+                <input type="radio" name="plan" value="growth" checked class="w-4 h-4 flex-shrink-0 accent-violet-500">
+                <span class="text-sm text-slate-300">Growth — <span class="text-xs text-accent-400">3 000 MAD</span></span>
               </label>
-              <label class="flex items-center gap-2 p-3 rounded-xl border border-white/10 cursor-pointer hover:border-brand-500/50 transition-colors">
-                <input type="radio" name="plan" value="fullstack" class="w-4 h-4 accent-violet-500">
-                <span class="text-sm text-slate-300">Full Stack<br /><span class="text-xs text-slate-500">5 000 MAD</span></span>
+              <label class="flex items-center gap-3 p-3 rounded-xl border border-white/10 cursor-pointer hover:border-brand-500/50 transition-colors">
+                <input type="radio" name="plan" value="fullstack" class="w-4 h-4 flex-shrink-0 accent-violet-500">
+                <span class="text-sm text-slate-300">Full Stack — <span class="text-xs text-slate-500">5 000 MAD</span></span>
               </label>
             </div>
           </div>
@@ -702,6 +727,26 @@
   </footer>
 
   <script>
+    // Mobile menu toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const menuIconOpen = document.getElementById('menuIconOpen');
+    const menuIconClose = document.getElementById('menuIconClose');
+
+    mobileMenuBtn.addEventListener('click', () => {
+      const isHidden = mobileMenu.classList.toggle('hidden');
+      menuIconOpen.classList.toggle('hidden', !isHidden);
+      menuIconClose.classList.toggle('hidden', isHidden);
+    });
+
+    document.querySelectorAll('.mobile-nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+        menuIconOpen.classList.remove('hidden');
+        menuIconClose.classList.add('hidden');
+      });
+    });
+
     // Intersection Observer for animations
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
