@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Marketgint — Agence Marketing IA pour les PME</title>
+  <meta name="description" content="Marketgint propulse votre business avec le marketing IA : réseaux sociaux, vidéos, stratégie de contenu et analytics — tout automatisé, pour les PME marocaines et africaines." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'sans-serif'] },
+          colors: {
+            brand: {
+              50:  '#f0f9ff',
+              100: '#e0f2fe',
+              400: '#38bdf8',
+              500: '#0ea5e9',
+              600: '#0284c7',
+              700: '#0369a1',
+            },
+            accent: {
+              400: '#a78bfa',
+              500: '#8b5cf6',
+              600: '#7c3aed',
+            },
+            dark: {
+              900: '#0a0a0f',
+              800: '#12121a',
+              700: '#1a1a28',
+              600: '#22223a',
+            }
+          },
+          animation: {
+            'fade-up': 'fadeUp 0.6s ease-out forwards',
+            'float': 'float 6s ease-in-out infinite',
+            'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+          },
+          keyframes: {
+            fadeUp: {
+              '0%': { opacity: '0', transform: 'translateY(30px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
+            },
+            float: {
+              '0%, 100%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-15px)' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: 'Inter', sans-serif; background-color: #0a0a0f; color: #f1f5f9; }
+    .gradient-text {
+      background: linear-gradient(135deg, #38bdf8 0%, #8b5cf6 50%, #f472b6 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .gradient-border {
+      position: relative;
+      background: linear-gradient(#12121a, #12121a) padding-box,
+                  linear-gradient(135deg, #38bdf8, #8b5cf6) border-box;
+      border: 1px solid transparent;
+    }
+    .glow-blue { box-shadow: 0 0 40px rgba(56,189,248,0.15); }
+    .glow-purple { box-shadow: 0 0 40px rgba(139,92,246,0.15); }
+    .card-hover { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .card-hover:hover { transform: translateY(-6px); box-shadow: 0 20px 60px rgba(56,189,248,0.12); }
+    .hero-grid {
+      background-image: linear-gradient(rgba(56,189,248,0.04) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(56,189,248,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    .nav-blur { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+    @keyframes shimmer {
+      0% { background-position: -200% center; }
+      100% { background-position: 200% center; }
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, #0ea5e9, #8b5cf6);
+      transition: all 0.3s ease;
+    }
+    .btn-primary:hover {
+      background: linear-gradient(135deg, #38bdf8, #a78bfa);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(139,92,246,0.35);
+    }
+    .badge {
+      background: linear-gradient(135deg, rgba(56,189,248,0.15), rgba(139,92,246,0.15));
+      border: 1px solid rgba(139,92,246,0.3);
+    }
+    .stat-card {
+      background: linear-gradient(135deg, rgba(56,189,248,0.08), rgba(139,92,246,0.08));
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .pricing-popular {
+      background: linear-gradient(135deg, rgba(14,165,233,0.12), rgba(139,92,246,0.12));
+      border: 1px solid rgba(139,92,246,0.5);
+    }
+    .pricing-default {
+      background: #12121a;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    input, textarea, select {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.12);
+      color: #f1f5f9;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    input:focus, textarea:focus, select:focus {
+      outline: none;
+      border-color: #8b5cf6;
+      box-shadow: 0 0 0 3px rgba(139,92,246,0.15);
+    }
+    input::placeholder, textarea::placeholder { color: rgba(241,245,249,0.4); }
+    .section-fade { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .section-fade.visible { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body class="antialiased">
+
+  <!-- NAVBAR -->
+  <nav class="fixed top-0 left-0 right-0 z-50 nav-blur bg-dark-900/80 border-b border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <div class="flex items-center gap-2">
+          <div class="w-8 h-8 rounded-lg btn-primary flex items-center justify-center">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5">
+              <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+            </svg>
+          </div>
+          <span class="text-lg font-bold text-white">marketgint</span>
+        </div>
+        <div class="hidden md:flex items-center gap-8">
+          <a href="#services" class="text-sm text-slate-400 hover:text-white transition-colors">Services</a>
+          <a href="#pricing" class="text-sm text-slate-400 hover:text-white transition-colors">Tarifs</a>
+          <a href="#why-us" class="text-sm text-slate-400 hover:text-white transition-colors">Pourquoi nous</a>
+          <a href="#contact" class="text-sm text-slate-400 hover:text-white transition-colors">Contact</a>
+        </div>
+        <a href="#contact" class="btn-primary text-sm font-semibold text-white px-4 py-2 rounded-lg">
+          Demander un devis
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="relative min-h-screen flex items-center hero-grid pt-16">
+    <!-- Background blobs -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none">
+      <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-brand-500/10 rounded-full blur-3xl"></div>
+      <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent-500/10 rounded-full blur-3xl"></div>
+    </div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+      <div class="text-center max-w-4xl mx-auto">
+        <div class="inline-flex items-center gap-2 badge rounded-full px-4 py-2 text-sm mb-8">
+          <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse-slow"></span>
+          <span class="text-slate-300">L'agence marketing IA #1 pour les PME africaines</span>
+        </div>
+        <h1 class="text-5xl sm:text-6xl lg:text-7xl font-black leading-tight mb-6">
+          Votre marketing,
+          <br />
+          <span class="gradient-text">propulsé par l'IA</span>
+        </h1>
+        <p class="text-xl text-slate-400 leading-relaxed mb-10 max-w-2xl mx-auto">
+          Réseaux sociaux, vidéos virales, stratégie de contenu et analytics — tout géré pour vous. 
+          <strong class="text-white">Concentrez-vous sur votre business.</strong> On s'occupe du reste.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center mb-16">
+          <a href="#contact" class="btn-primary text-white font-bold px-8 py-4 rounded-xl text-lg">
+            Demander un devis gratuit →
+          </a>
+          <a href="#services" class="bg-white/5 border border-white/10 text-white font-semibold px-8 py-4 rounded-xl text-lg hover:bg-white/10 transition-all">
+            Voir nos services
+          </a>
+        </div>
+        <!-- Stats -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+          <div class="stat-card rounded-xl p-4">
+            <div class="text-3xl font-black gradient-text">50+</div>
+            <div class="text-xs text-slate-500 mt-1">Clients actifs</div>
+          </div>
+          <div class="stat-card rounded-xl p-4">
+            <div class="text-3xl font-black gradient-text">3×</div>
+            <div class="text-xs text-slate-500 mt-1">Plus d'engagement</div>
+          </div>
+          <div class="stat-card rounded-xl p-4">
+            <div class="text-3xl font-black gradient-text">100%</div>
+            <div class="text-xs text-slate-500 mt-1">IA-powered</div>
+          </div>
+          <div class="stat-card rounded-xl p-4">
+            <div class="text-3xl font-black gradient-text">24/7</div>
+            <div class="text-xs text-slate-500 mt-1">Présence en ligne</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" class="py-24 bg-dark-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16 section-fade">
+        <div class="inline-flex items-center gap-2 badge rounded-full px-4 py-2 text-sm mb-4">
+          <span class="text-accent-400">✦</span>
+          <span class="text-slate-300">Ce qu'on fait pour vous</span>
+        </div>
+        <h2 class="text-4xl sm:text-5xl font-black mb-4">
+          Tout ce dont votre<br /><span class="gradient-text">business a besoin</span>
+        </h2>
+        <p class="text-slate-400 text-lg max-w-2xl mx-auto">
+          Une suite complète de services marketing, entièrement automatisés par l'IA — pour une fraction du coût d'une agence traditionnelle.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Service 1 -->
+        <div class="gradient-border rounded-2xl p-8 card-hover section-fade">
+          <div class="w-14 h-14 rounded-xl bg-brand-500/15 flex items-center justify-center mb-6">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2">
+              <path d="M17 2H7a5 5 0 0 0-5 5v10a5 5 0 0 0 5 5h10a5 5 0 0 0 5-5V7a5 5 0 0 0-5-5z"/>
+              <circle cx="12" cy="12" r="4"/>
+              <circle cx="17.5" cy="6.5" r="1.5"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-3">Gestion des Réseaux Sociaux</h3>
+          <p class="text-slate-400 mb-4">Posts quotidiens sur Instagram, LinkedIn, X et TikTok. Contenu adapté à votre secteur, votre ton et votre audience cible.</p>
+          <ul class="space-y-2">
+            <li class="flex items-center gap-2 text-sm text-slate-300"><span class="text-brand-400">✓</span> Planification et publication automatiques</li>
+            <li class="flex items-center gap-2 text-sm text-slate-300"><span class="text-brand-400">✓</span> Hashtags et formats optimisés</li>
+            <li class="flex items-center gap-2 text-sm text-slate-300"><span class="text-brand-400">✓</span> Community management & DMs</li>
+          </ul>
+        </div>
+        <!-- Service 2 -->
+        <div class="gradient-border rounded-2xl p-8 card-hover section-fade">
+          <div class="w-14 h-14 rounded-xl bg-accent-500/15 flex items-center justify-center mb-6">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="2">
+              <polygon points="23 7 16 12 23 17 23 7"/>
+              <rect x="1" y="5" width="15" height="14" rx="2" ry="2"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-3">Contenu Vidéo IA</h3>
+          <p class="text-slate-400 mb-4">Reels, shorts et vidéos explicatives générés par IA. Des visuels professionnels qui captivent et convertissent.</p>
+          <ul class="space-y-2">
+            <li class="flex items-center gap-2 text-sm text-slate-300"><span class="text-accent-400">✓</span> Reels & TikToks viraux</li>
+            <li class="flex items-center gap-2 text-sm text-slate-300"><span class="text-accent-400">✓</span> Vidéos produits et explainer</li>
+            <li class="flex items-center gap-2 text-sm text-slate-300"><span class="text-accent-400">✓</span> Sous-titres & montage auto</li>
+          </ul>
+        </div>
+        <!-- Service 3 -->
+        <div class="gradient-border rounded-2xl p-8 card-hover section-fade">
+          <div class="w-14 h-14 rounded-xl bg-pink-500/15 flex items-center justify-center mb-6">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#f472b6" stroke-width="2">
+              <path d="M12 20h9"/>
+              <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-3">Stratégie de Contenu</h3>
+          <p class="text-slate-400 mb-4">Un calendrier éditorial complet, des articles de blog, des carrousels et des copies publicitaires qui vendent.</p>
+          <ul class="space-y-2">
+            <li class="flex items-center gap-2 text-sm text-slate-300"><span class="text-pink-400">✓</span> Calendrier éditorial mensuel</li>
+            <li class="flex items-center gap-2 text-sm text-slate-300"><span class="text-pink-400">✓</span> Articles blog & newsletters</li>
+            <li class="flex items-center gap-2 text-sm text-slate-300"><span class="text-pink-400">✓</span> Copies pub Google & Meta Ads</li>
+          </ul>
+        </div>
+        <!-- Service 4 -->
+        <div class="gradient-border rounded-2xl p-8 card-hover section-fade">
+          <div class="w-14 h-14 rounded-xl bg-green-500/15 flex items-center justify-center mb-6">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="2">
+              <line x1="18" y1="20" x2="18" y2="10"/>
+              <line x1="12" y1="20" x2="12" y2="4"/>
+              <line x1="6" y1="20" x2="6" y2="14"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-3">Analytics & Reporting</h3>
+          <p class="text-slate-400 mb-4">Des rapports clairs chaque semaine. Vous savez exactement ce qui marche et pourquoi — sans nager dans les données.</p>
+          <ul class="space-y-2">
+            <li class="flex items-center gap-2 text-sm text-slate-300"><span class="text-green-400">✓</span> Tableau de bord en temps réel</li>
+            <li class="flex items-center gap-2 text-sm text-slate-300"><span class="text-green-400">✓</span> Rapport hebdo par email</li>
+            <li class="flex items-center gap-2 text-sm text-slate-300"><span class="text-green-400">✓</span> Recommandations IA actionnables</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY US -->
+  <section id="why-us" class="py-24 bg-dark-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div class="section-fade">
+          <div class="inline-flex items-center gap-2 badge rounded-full px-4 py-2 text-sm mb-6">
+            <span class="text-accent-400">✦</span>
+            <span class="text-slate-300">Pourquoi Marketgint ?</span>
+          </div>
+          <h2 class="text-4xl sm:text-5xl font-black mb-6">
+            L'agence qui<br /><span class="gradient-text">fait le travail</span>
+          </h2>
+          <p class="text-slate-400 text-lg mb-8">
+            Nous combinons la puissance de l'intelligence artificielle avec une connaissance profonde du marché marocain et africain. Résultat : un marketing qui résonne vraiment avec votre audience.
+          </p>
+          <div class="space-y-6">
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-lg bg-brand-500/15 flex items-center justify-center flex-shrink-0 mt-1">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+              </div>
+              <div>
+                <h4 class="font-bold text-white mb-1">10× plus rapide qu'une agence classique</h4>
+                <p class="text-slate-400 text-sm">L'IA produit votre contenu en quelques secondes. Votre présence en ligne est active 24/7 sans délai.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-lg bg-accent-500/15 flex items-center justify-center flex-shrink-0 mt-1">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+              </div>
+              <div>
+                <h4 class="font-bold text-white mb-1">Prix accessibles pour les PME</h4>
+                <p class="text-slate-400 text-sm">À partir de 1 500 MAD/mois — moins cher qu'un Community Manager junior, avec des résultats 10× supérieurs.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-lg bg-pink-500/15 flex items-center justify-center flex-shrink-0 mt-1">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f472b6" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              </div>
+              <div>
+                <h4 class="font-bold text-white mb-1">Résultats mesurables dès le 1er mois</h4>
+                <p class="text-slate-400 text-sm">Engagement, abonnés, leads — on suit tout et on vous montre exactement ce que le marketing vous rapporte.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Visual side -->
+        <div class="relative section-fade">
+          <div class="rounded-2xl bg-dark-700 border border-white/10 p-6 glow-purple">
+            <div class="flex items-center gap-3 mb-6">
+              <div class="w-3 h-3 rounded-full bg-red-500"></div>
+              <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+              <div class="w-3 h-3 rounded-full bg-green-500"></div>
+              <span class="text-xs text-slate-500 ml-2">Dashboard Marketing IA</span>
+            </div>
+            <div class="space-y-4">
+              <div class="bg-dark-900 rounded-xl p-4">
+                <div class="flex justify-between items-center mb-3">
+                  <span class="text-sm font-medium text-slate-300">Engagement Instagram</span>
+                  <span class="text-green-400 text-sm font-bold">+247%</span>
+                </div>
+                <div class="w-full bg-dark-600 rounded-full h-2">
+                  <div class="bg-gradient-to-r from-brand-500 to-accent-500 h-2 rounded-full" style="width: 82%"></div>
+                </div>
+              </div>
+              <div class="bg-dark-900 rounded-xl p-4">
+                <div class="flex justify-between items-center mb-3">
+                  <span class="text-sm font-medium text-slate-300">Portée des posts LinkedIn</span>
+                  <span class="text-green-400 text-sm font-bold">+189%</span>
+                </div>
+                <div class="w-full bg-dark-600 rounded-full h-2">
+                  <div class="bg-gradient-to-r from-accent-500 to-pink-500 h-2 rounded-full" style="width: 68%"></div>
+                </div>
+              </div>
+              <div class="bg-dark-900 rounded-xl p-4">
+                <div class="flex justify-between items-center mb-3">
+                  <span class="text-sm font-medium text-slate-300">Leads générés ce mois</span>
+                  <span class="text-green-400 text-sm font-bold">+312%</span>
+                </div>
+                <div class="w-full bg-dark-600 rounded-full h-2">
+                  <div class="bg-gradient-to-r from-green-500 to-brand-500 h-2 rounded-full" style="width: 91%"></div>
+                </div>
+              </div>
+              <div class="grid grid-cols-3 gap-3 mt-4">
+                <div class="bg-dark-900 rounded-xl p-3 text-center">
+                  <div class="text-xl font-black gradient-text">12K</div>
+                  <div class="text-xs text-slate-500">Abonnés gagnés</div>
+                </div>
+                <div class="bg-dark-900 rounded-xl p-3 text-center">
+                  <div class="text-xl font-black gradient-text">480</div>
+                  <div class="text-xs text-slate-500">Posts publiés</div>
+                </div>
+                <div class="bg-dark-900 rounded-xl p-3 text-center">
+                  <div class="text-xl font-black gradient-text">98%</div>
+                  <div class="text-xs text-slate-500">Satisfaction</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section id="pricing" class="py-24 bg-dark-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16 section-fade">
+        <div class="inline-flex items-center gap-2 badge rounded-full px-4 py-2 text-sm mb-4">
+          <span class="text-accent-400">✦</span>
+          <span class="text-slate-300">Tarifs transparents</span>
+        </div>
+        <h2 class="text-4xl sm:text-5xl font-black mb-4">
+          Des prix pour<br /><span class="gradient-text">toutes les ambitions</span>
+        </h2>
+        <p class="text-slate-400 text-lg max-w-xl mx-auto">
+          Pas de frais cachés. Pas de contrat long terme. Commencez aujourd'hui, évoluez quand vous êtes prêt.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+        <!-- Starter -->
+        <div class="pricing-default rounded-2xl p-8 card-hover section-fade">
+          <div class="mb-6">
+            <div class="text-sm font-semibold text-slate-400 mb-2 uppercase tracking-widest">Starter</div>
+            <div class="flex items-end gap-2 mb-1">
+              <span class="text-5xl font-black text-white">1 500</span>
+              <span class="text-slate-400 mb-2">MAD/mois</span>
+            </div>
+            <p class="text-slate-500 text-sm">Idéal pour débuter en ligne</p>
+          </div>
+          <ul class="space-y-3 mb-8">
+            <li class="flex items-center gap-3 text-sm text-slate-300">
+              <svg class="w-5 h-5 text-brand-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              1 réseau social (Instagram ou LinkedIn)
+            </li>
+            <li class="flex items-center gap-3 text-sm text-slate-300">
+              <svg class="w-5 h-5 text-brand-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              5 posts par semaine
+            </li>
+            <li class="flex items-center gap-3 text-sm text-slate-300">
+              <svg class="w-5 h-5 text-brand-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              1 vidéo/mois
+            </li>
+            <li class="flex items-center gap-3 text-sm text-slate-300">
+              <svg class="w-5 h-5 text-brand-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              Rapport mensuel
+            </li>
+            <li class="flex items-center gap-3 text-sm text-slate-500">
+              <svg class="w-5 h-5 text-slate-600 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+              Community management
+            </li>
+            <li class="flex items-center gap-3 text-sm text-slate-500">
+              <svg class="w-5 h-5 text-slate-600 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+              Publicités payantes
+            </li>
+          </ul>
+          <a href="#contact" class="block w-full text-center bg-white/5 border border-white/10 text-white font-semibold py-3 rounded-xl hover:bg-white/10 transition-all">
+            Commencer maintenant
+          </a>
+        </div>
+
+        <!-- Growth (Popular) -->
+        <div class="pricing-popular rounded-2xl p-8 card-hover section-fade relative">
+          <div class="absolute -top-4 left-1/2 -translate-x-1/2">
+            <div class="btn-primary text-white text-xs font-bold px-4 py-1.5 rounded-full">⭐ Le plus populaire</div>
+          </div>
+          <div class="mb-6">
+            <div class="text-sm font-semibold text-accent-400 mb-2 uppercase tracking-widest">Growth</div>
+            <div class="flex items-end gap-2 mb-1">
+              <span class="text-5xl font-black text-white">3 000</span>
+              <span class="text-slate-400 mb-2">MAD/mois</span>
+            </div>
+            <p class="text-slate-500 text-sm">Pour accélérer votre croissance</p>
+          </div>
+          <ul class="space-y-3 mb-8">
+            <li class="flex items-center gap-3 text-sm text-slate-300">
+              <svg class="w-5 h-5 text-accent-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              3 réseaux sociaux
+            </li>
+            <li class="flex items-center gap-3 text-sm text-slate-300">
+              <svg class="w-5 h-5 text-accent-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              Posts quotidiens
+            </li>
+            <li class="flex items-center gap-3 text-sm text-slate-300">
+              <svg class="w-5 h-5 text-accent-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              4 vidéos/mois
+            </li>
+            <li class="flex items-center gap-3 text-sm text-slate-300">
+              <svg class="w-5 h-5 text-accent-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              Rapport hebdomadaire
+            </li>
+            <li class="flex items-center gap-3 text-sm text-slate-300">
+              <svg class="w-5 h-5 text-accent-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              Community management
+            </li>
+            <li class="flex items-center gap-3 text-sm text-slate-500">
+              <svg class="w-5 h-5 text-slate-600 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+              Publicités payantes
+            </li>
+          </ul>
+          <a href="#contact" class="btn-primary block w-full text-center text-white font-bold py-3 rounded-xl">
+            Commencer maintenant
+          </a>
+        </div>
+
+        <!-- Full Stack -->
+        <div class="pricing-default rounded-2xl p-8 card-hover section-fade">
+          <div class="mb-6">
+            <div class="text-sm font-semibold text-slate-400 mb-2 uppercase tracking-widest">Full Stack</div>
+            <div class="flex items-end gap-2 mb-1">
+              <span class="text-5xl font-black text-white">5 000</span>
+              <span class="text-slate-400 mb-2">MAD/mois</span>
+            </div>
+            <p class="text-slate-500 text-sm">Pour dominer votre marché</p>
+          </div>
+          <ul class="space-y-3 mb-8">
+            <li class="flex items-center gap-3 text-sm text-slate-300">
+              <svg class="w-5 h-5 text-pink-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              Toutes les plateformes
+            </li>
+            <li class="flex items-center gap-3 text-sm text-slate-300">
+              <svg class="w-5 h-5 text-pink-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              Posts & vidéo quotidiens
+            </li>
+            <li class="flex items-center gap-3 text-sm text-slate-300">
+              <svg class="w-5 h-5 text-pink-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              Calendrier éditorial complet
+            </li>
+            <li class="flex items-center gap-3 text-sm text-slate-300">
+              <svg class="w-5 h-5 text-pink-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              Analytics avancé
+            </li>
+            <li class="flex items-center gap-3 text-sm text-slate-300">
+              <svg class="w-5 h-5 text-pink-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              Community management
+            </li>
+            <li class="flex items-center gap-3 text-sm text-slate-300">
+              <svg class="w-5 h-5 text-pink-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              Publicités Meta & Google Ads
+            </li>
+          </ul>
+          <a href="#contact" class="block w-full text-center bg-white/5 border border-white/10 text-white font-semibold py-3 rounded-xl hover:bg-white/10 transition-all">
+            Commencer maintenant
+          </a>
+        </div>
+
+      </div>
+      <p class="text-center text-slate-500 text-sm mt-8">
+        Besoin d'une solution sur mesure pour votre agence ? 
+        <a href="#contact" class="text-accent-400 hover:text-accent-300 transition-colors">Parlez-nous de votre projet →</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS / TRUST -->
+  <section class="py-20 bg-dark-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12 section-fade">
+        <p class="text-slate-500 text-sm uppercase tracking-widest mb-6">Ils nous font confiance</p>
+        <div class="flex flex-wrap items-center justify-center gap-12">
+          <div class="text-2xl font-black text-slate-600 hover:text-slate-400 transition-colors">Restaurant Dar Zitoun</div>
+          <div class="text-2xl font-black text-slate-600 hover:text-slate-400 transition-colors">Clinique Santé Plus</div>
+          <div class="text-2xl font-black text-slate-600 hover:text-slate-400 transition-colors">Immobilier Atlas</div>
+          <div class="text-2xl font-black text-slate-600 hover:text-slate-400 transition-colors">Coach Fatima</div>
+        </div>
+      </div>
+      <!-- Quote -->
+      <div class="max-w-3xl mx-auto section-fade">
+        <div class="gradient-border rounded-2xl p-8 text-center">
+          <div class="text-4xl text-accent-400 mb-4">"</div>
+          <p class="text-xl text-slate-300 mb-6 italic leading-relaxed">
+            Marketgint a transformé notre présence en ligne en 30 jours. Nos réservations ont augmenté de 40% grâce aux posts Instagram et aux vidéos générés par l'IA.
+          </p>
+          <div class="flex items-center justify-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-brand-500 to-accent-500 flex items-center justify-center text-white font-bold">K</div>
+            <div class="text-left">
+              <div class="font-semibold text-white text-sm">Karim B.</div>
+              <div class="text-slate-500 text-xs">Fondateur, Restaurant Dar Zitoun — Casablanca</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT FORM -->
+  <section id="contact" class="py-24 bg-dark-800">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12 section-fade">
+        <div class="inline-flex items-center gap-2 badge rounded-full px-4 py-2 text-sm mb-4">
+          <span class="text-green-400">●</span>
+          <span class="text-slate-300">Réponse sous 24h</span>
+        </div>
+        <h2 class="text-4xl sm:text-5xl font-black mb-4">
+          <span class="gradient-text">Demandez votre</span><br />devis gratuit
+        </h2>
+        <p class="text-slate-400 text-lg">
+          Parlez-nous de votre business. On vous prépare une stratégie personnalisée — gratuitement.
+        </p>
+      </div>
+      <div class="gradient-border rounded-2xl p-8 section-fade">
+        <form id="contactForm" class="space-y-6">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div>
+              <label class="block text-sm font-medium text-slate-300 mb-2">Nom complet *</label>
+              <input type="text" required placeholder="Mohammed Alami" class="w-full px-4 py-3 rounded-xl text-sm">
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-slate-300 mb-2">Téléphone / WhatsApp *</label>
+              <input type="tel" required placeholder="+212 6XX XXX XXX" class="w-full px-4 py-3 rounded-xl text-sm">
+            </div>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-slate-300 mb-2">Email professionnel *</label>
+            <input type="email" required placeholder="contact@votrebusiness.ma" class="w-full px-4 py-3 rounded-xl text-sm">
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-slate-300 mb-2">Secteur d'activité</label>
+            <select class="w-full px-4 py-3 rounded-xl text-sm">
+              <option value="">Sélectionnez votre secteur...</option>
+              <option>Restaurant & Hôtellerie</option>
+              <option>Immobilier</option>
+              <option>Santé & Clinique</option>
+              <option>Coaching & Formation</option>
+              <option>Mode & Beauté</option>
+              <option>E-commerce</option>
+              <option>Autre</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-slate-300 mb-2">Forfait qui vous intéresse</label>
+            <div class="grid grid-cols-3 gap-3">
+              <label class="flex items-center gap-2 p-3 rounded-xl border border-white/10 cursor-pointer hover:border-brand-500/50 transition-colors">
+                <input type="radio" name="plan" value="starter" class="w-4 h-4 accent-violet-500">
+                <span class="text-sm text-slate-300">Starter<br /><span class="text-xs text-slate-500">1 500 MAD</span></span>
+              </label>
+              <label class="flex items-center gap-2 p-3 rounded-xl border border-accent-500/50 bg-accent-500/5 cursor-pointer">
+                <input type="radio" name="plan" value="growth" checked class="w-4 h-4 accent-violet-500">
+                <span class="text-sm text-slate-300">Growth<br /><span class="text-xs text-accent-400">3 000 MAD</span></span>
+              </label>
+              <label class="flex items-center gap-2 p-3 rounded-xl border border-white/10 cursor-pointer hover:border-brand-500/50 transition-colors">
+                <input type="radio" name="plan" value="fullstack" class="w-4 h-4 accent-violet-500">
+                <span class="text-sm text-slate-300">Full Stack<br /><span class="text-xs text-slate-500">5 000 MAD</span></span>
+              </label>
+            </div>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-slate-300 mb-2">Décrivez votre business</label>
+            <textarea rows="4" placeholder="Parlez-nous de votre activité, vos objectifs marketing, vos défis actuels..." class="w-full px-4 py-3 rounded-xl text-sm resize-none"></textarea>
+          </div>
+          <button type="submit" class="btn-primary w-full text-white font-bold py-4 rounded-xl text-lg">
+            Demander un devis gratuit →
+          </button>
+          <p class="text-center text-slate-500 text-xs">
+            En soumettant ce formulaire, vous acceptez d'être contacté par notre équipe. Aucun engagement, aucun paiement.
+          </p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-dark-900 border-t border-white/5 py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+        <div class="md:col-span-2">
+          <div class="flex items-center gap-2 mb-4">
+            <div class="w-8 h-8 rounded-lg btn-primary flex items-center justify-center">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+            </div>
+            <span class="text-lg font-bold text-white">marketgint</span>
+          </div>
+          <p class="text-slate-500 text-sm max-w-xs leading-relaxed">
+            L'agence marketing IA pour les PME marocaines et africaines. Votre croissance, automatisée.
+          </p>
+          <div class="flex gap-4 mt-4">
+            <a href="#" class="w-9 h-9 rounded-lg bg-white/5 flex items-center justify-center hover:bg-white/10 transition-colors">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="text-slate-400"><path d="M17 2H7a5 5 0 0 0-5 5v10a5 5 0 0 0 5 5h10a5 5 0 0 0 5-5V7a5 5 0 0 0-5-5zm-5 14a5 5 0 1 1 0-10 5 5 0 0 1 0 10zm5.5-10a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/></svg>
+            </a>
+            <a href="#" class="w-9 h-9 rounded-lg bg-white/5 flex items-center justify-center hover:bg-white/10 transition-colors">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="text-slate-400"><path d="M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zM9 17H6.5v-7H9v7zM7.7 8.7a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zM18 17h-2.4v-3.8c0-.9-.3-1.5-1.1-1.5-.6 0-1 .4-1.1.8-.1.2-.1.4-.1.6V17h-2.4V10h2.3v1c.3-.5 1-1.2 2.2-1.2 1.6 0 2.8 1.1 2.8 3.3V17z"/></svg>
+            </a>
+            <a href="#" class="w-9 h-9 rounded-lg bg-white/5 flex items-center justify-center hover:bg-white/10 transition-colors">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="text-slate-400"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <h4 class="font-semibold text-white mb-4 text-sm uppercase tracking-widest">Services</h4>
+          <ul class="space-y-2">
+            <li><a href="#services" class="text-slate-500 text-sm hover:text-slate-300 transition-colors">Réseaux sociaux</a></li>
+            <li><a href="#services" class="text-slate-500 text-sm hover:text-slate-300 transition-colors">Vidéo IA</a></li>
+            <li><a href="#services" class="text-slate-500 text-sm hover:text-slate-300 transition-colors">Stratégie de contenu</a></li>
+            <li><a href="#services" class="text-slate-500 text-sm hover:text-slate-300 transition-colors">Analytics</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-semibold text-white mb-4 text-sm uppercase tracking-widest">Contact</h4>
+          <ul class="space-y-2">
+            <li class="text-slate-500 text-sm">contact@marketgint.com</li>
+            <li class="text-slate-500 text-sm">+212 6 XX XX XX XX</li>
+            <li class="text-slate-500 text-sm">Casablanca, Maroc</li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-white/5 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
+        <p class="text-slate-600 text-xs">© 2026 Marketgint. Tous droits réservés.</p>
+        <p class="text-slate-600 text-xs">Propulsé par <span class="gradient-text font-semibold">l'Intelligence Artificielle</span></p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Intersection Observer for animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+    document.querySelectorAll('.section-fade').forEach(el => observer.observe(el));
+
+    // Form submit handler
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const btn = this.querySelector('button[type="submit"]');
+      btn.innerHTML = '✓ Demande envoyée ! On vous contacte sous 24h';
+      btn.disabled = true;
+      btn.style.background = 'linear-gradient(135deg, #10b981, #059669)';
+    });
+
+    // Smooth mobile nav
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
